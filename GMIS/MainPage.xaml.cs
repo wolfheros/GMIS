@@ -16,14 +16,18 @@ using System.Windows.Shapes;
 namespace GMIS
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainPage : Page
     {
-        public MainWindow()
+        public MainPage()
         {
             InitializeComponent();
-            MainView.Content = new MainPage();
+        }
+
+        private void classbutton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new LoginPage());
         }
     }
 }
