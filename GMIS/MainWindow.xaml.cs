@@ -24,5 +24,10 @@ namespace GMIS
         {
             InitializeComponent();
         }
+
+        private void classbutton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
