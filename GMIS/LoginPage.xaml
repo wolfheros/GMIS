@@ -8,7 +8,48 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="LoginPage">
 
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="This is Login page" FontSize="30"/>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="2" Grid.Column="3" FontSize="36" 
+                   Text="Login System" Grid.ColumnSpan="3" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        
+        <StackPanel Margin="100,80,0,0" Grid.Row="3" Grid.Column="3" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Margin="0,0,30,0" Text=" First Name:" FontSize="30"/>
+            <TextBox x:Name="firstName" Width="250" VerticalContentAlignment="Center" FontSize="30"/>
+        </StackPanel>
+        <StackPanel Margin="100,30,0,0" Grid.Row="4" Grid.Column="3" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Margin="0,0,10,0" Text="Family Name:" FontSize="30"/>
+            <TextBox x:Name="familyName" Width="250" VerticalContentAlignment="Center" FontSize="30"/>
+        </StackPanel>
+        <StackPanel Margin="100,30,0,0" Grid.Row="5" Grid.Column="3" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Margin="0,0,30,0" Text=" Student ID:" FontSize="30"/>
+            <TextBox x:Name="studentID" Width="250" VerticalContentAlignment="Center" FontSize="30"/>
+        </StackPanel>
+        <StackPanel Margin="400,30,0,0" Grid.Row="6" Grid.Column="3" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="loginbutton" Content=" Login " FontSize="24" Click="loginbutton_Click" />
+        </StackPanel>
+        
+        
+        
     </Grid>
 </Page>

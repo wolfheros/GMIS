@@ -20,9 +20,31 @@ namespace GMIS
     /// </summary>
     public partial class LoginPage : Page
     {
-        public LoginPage()
+        private int Type
+        {
+            get; set; 
+        }
+        public LoginPage(int type)
         {
             InitializeComponent();
+            Type = type;
+        }
+
+        private void loginbutton_Click(object sender, RoutedEventArgs e)
+        {
+            var FirstName = firstName.Text;
+            var FamilyName = familyName.Text;
+            var StudentID = studentID.Text;
+
+            if(Type == GlobalsType.ClassManagementType)
+            {
+                User user = new User(FirstName, FamilyName, StudentID);
+                if (DatabaseContorller.AuthUser(user))
+                {
+                    MessageBox.Show(FirstName + " , " + FamilyName + "" +" is exit");
+                }
+
+            }
         }
     }
 }

@@ -27,7 +27,12 @@ namespace GMIS
 
         private void classbutton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new LoginPage());
+            this.NavigationService.Navigate(new LoginPage(GlobalsType.ClassManagementType));
+        }
+
+        private void meettingbutton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new LoginPage(GlobalsType.MeettingManagementType));
         }
     }
 }
