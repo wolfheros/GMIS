@@ -1,4 +1,8 @@
-﻿using System;
+﻿/**
+ * @auther Shengya Ji
+ * @date 09/05/2022
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,6 +46,10 @@ namespace GMIS
                 if (DatabaseContorller.AuthUser(user))
                 {
                     MessageBox.Show(FirstName + " , " + FamilyName + "" +" is exit");
+                }
+                else
+                {
+                    MessageBox.Show(FirstName + " , " + FamilyName + "" + " is NOT exit");
                 }
 
             }
