@@ -14,24 +14,10 @@ namespace GMIS
 {
     public class DatabaseContorller
     {
-
-        // Auther the user is in the Database
-        // @user User instance
         public static bool AuthUser(User user)
         {
-            MySqlDataReader reader = GetReader(user);
-            if (reader == null)
-            {
-                return false;
-            }
-            return reader.HasRows;
-        }
+            bool auth = false;
 
-
-        // Get the database reader from the connection.
-        // @user User instance for user id
-        private static MySqlDataReader GetReader(User user)
-        {
             MySqlConnection connection = DatabaseHelper.Instance.Connection;
             MySqlDataReader reader = null;
             try
@@ -42,6 +28,7 @@ namespace GMIS
                     new MySqlCommand("SELECT * FROM student WHERE student_id=?id", connection);
                 mySqlCommand.Parameters.AddWithValue("id", user.StudentId);
                 reader = mySqlCommand.ExecuteReader();
+                auth = reader.HasRows;
             }
             catch (MySqlException e)
             {
@@ -58,7 +45,7 @@ namespace GMIS
                     connection.Close();
                 }
             }
-            return reader;
+            return auth;
         }
     }
 }
