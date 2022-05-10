@@ -14,7 +14,6 @@ namespace GMIS
 {
     public class DatabaseContorller
     {
-        // need change the method
         public static bool AuthUser(User user)
         {
             bool auth = false;
