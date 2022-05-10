@@ -45,11 +45,11 @@ namespace GMIS
                 User user = new User(FirstName, FamilyName, StudentID);
                 if (DatabaseContorller.AuthUser(user))
                 {
-                    MessageBox.Show(FirstName + " , " + FamilyName + "" +" is exit");
+                    MessageBox.Show(FirstName + " , " + FamilyName + "," + StudentID +" is exit");
                 }
                 else
                 {
-                    MessageBox.Show(FirstName + " , " + FamilyName + "" + " is NOT exit");
+                    MessageBox.Show(FirstName + " , " + FamilyName + "," + StudentID + " is NOT exit");
                 }
 
             }
