@@ -45,7 +45,7 @@ namespace GMIS
                 User user = new User(FirstName, FamilyName, StudentID);
                 if (DatabaseContorller.AuthUser(user))
                 {
-                    MessageBox.Show(FirstName + " , " + FamilyName + "," + StudentID +" is exit");
+                    this.NavigationService.Navigate(new ClassPage(DatabaseContorller.GetStudent()));
                 }
                 else
                 {

@@ -33,7 +33,7 @@
                    Text="Login System" Grid.ColumnSpan="3" 
                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
         
-        <StackPanel Margin="100,80,0,0" Grid.Row="3" Grid.Column="3" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Margin="100,60,0,0" Grid.Row="3" Grid.Column="3" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Margin="0,0,30,0" Text=" First Name:" FontSize="30"/>
             <TextBox x:Name="firstName" Width="250" VerticalContentAlignment="Center" FontSize="30"/>
         </StackPanel>

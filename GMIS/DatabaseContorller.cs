@@ -20,7 +20,7 @@ namespace GMIS
         // @User user to store the input data.
         public static bool AuthUser(User user)
         {
-            FetchDataFromDatabase(user);
+            FetchStudentDataFromDatabase(user);
             return student != null;
         }
 
@@ -28,7 +28,7 @@ namespace GMIS
          *  Fech data from database during the login.
          *  @User user for the datafeching.
          */
-        private static void FetchDataFromDatabase(User user)
+        private static void FetchStudentDataFromDatabase(User user)
         {
             MySqlConnection connection = DatabaseHelper.Instance.Connection;
             MySqlDataReader reader = null;
@@ -91,6 +91,176 @@ namespace GMIS
         public static StudentBean? GetStudent()
         {
             return student;
+        }
+
+        public static List<ClassBean> FetchClassDataFromDatabase(string sqlString, int DataType)
+        {
+            MySqlConnection connection = DatabaseHelper.Instance.Connection;
+            MySqlDataReader reader = null;
+            List<ClassBean> list = new List<ClassBean>();
+            MySqlCommand mySqlCommand = null;
+            try
+            {
+                connection.Open();
+                switch (DataType)
+                {
+                    // show class data
+                    case 0:
+                        {
+                           mySqlCommand = new MySqlCommand("SELECT class_id," +
+                                        "group_id," +
+                                        "day," +
+                                        "start," +
+                                        "end," +
+                                        "room FROM class WHERE group_id=?id", connection);
+                            mySqlCommand.Parameters.AddWithValue("id", sqlString);
+                            break;
+                        }
+                    // show all class data
+                    case 1:
+                        {
+                            mySqlCommand = new MySqlCommand("SELECT class_id, " +
+                                        "group_id," +
+                                        "day," +
+                                        "start," +
+                                        "end," +
+                                        "room FROM class", connection);
+                            break;
+                        }
+                    // custom search class table data
+                    case 2:
+                        {
+                            mySqlCommand = new MySqlCommand("SELECT class_id, " +
+                                        "group_id," +
+                                        "day," +
+                                        "start," +
+                                        "end," +
+                                        "room FROM class WHERE day LIKE @daySearch " +
+                                        "OR class_id LIKE @classSearch " +
+                                        "OR room LIKE @roomSearch", connection);
+                            mySqlCommand.Parameters.AddWithValue("@daySearch","%" + sqlString + "%");   
+                            mySqlCommand.Parameters.AddWithValue("@classSearch","%" + sqlString + "%");   
+                            mySqlCommand.Parameters.AddWithValue("@roomSearch","%" + sqlString + "%");   
+                            break;
+                        }
+                }
+                 
+                reader = mySqlCommand.ExecuteReader();
+                
+                while (reader.Read())
+                {
+                    ClassBean bean = new ClassBean();
+                    bean.class_id = reader.GetString(0);
+                    bean.group_id = reader.GetString(1);
+                    bean.day = reader.GetString(2);
+                    bean.start = reader.GetString(3);
+                    bean.end = reader.GetString(4);
+                    bean.room = reader.GetString(5);
+                    list.Add(bean);
+                }
+
+            }
+            catch (MySqlException e)
+            {
+                //do nothing;
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+            return list;
+        }
+
+        public static List<MeetingBean> FetchMeetingDataFromDatabase(string sqlString, int DataType)
+        {
+            MySqlConnection connection = DatabaseHelper.Instance.Connection;
+            MySqlDataReader reader = null;
+            List<MeetingBean> list = new List<MeetingBean>();
+            MySqlCommand mySqlCommand = null;
+            try
+            {
+                connection.Open();
+                switch (DataType)
+                {
+                    // show class data
+                    case 0:
+                        {
+                            mySqlCommand = new MySqlCommand("SELECT meeting_id," +
+                                         "group_id," +
+                                         "day," +
+                                         "start," +
+                                         "end," +
+                                         "room FROM meeting WHERE group_id=?id", connection);
+                            mySqlCommand.Parameters.AddWithValue("id", sqlString);
+                            break;
+                        }
+                    // show all class data
+                    case 1:
+                        {
+                            mySqlCommand = new MySqlCommand("SELECT meeting_id, " +
+                                        "group_id," +
+                                        "day," +
+                                        "start," +
+                                        "end," +
+                                        "room FROM meeting", connection);
+                            break;
+                        }
+                    // custom search class table data
+                    case 2:
+                        {
+                            mySqlCommand = new MySqlCommand("SELECT meeting_id, " +
+                                        "group_id," +
+                                        "day," +
+                                        "start," +
+                                        "end," +
+                                        "room FROM meeting WHERE day LIKE @daySearch " +
+                                        "OR meeting_id LIKE @meetingSearch " +
+                                        "OR room LIKE @roomSearch", connection);
+                            mySqlCommand.Parameters.AddWithValue("@daySearch", "%" + sqlString + "%");
+                            mySqlCommand.Parameters.AddWithValue("@meetingSearch", "%" + sqlString + "%");
+                            mySqlCommand.Parameters.AddWithValue("@roomSearch", "%" + sqlString + "%");
+                            break;
+                        }
+                }
+
+                reader = mySqlCommand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    MeetingBean bean = new MeetingBean();
+                    bean.meeting_id = reader.GetString(0);
+                    bean.group_id = reader.GetString(1);
+                    bean.day = reader.GetString(2);
+                    bean.start = reader.GetString(3);
+                    bean.end = reader.GetString(4);
+                    bean.room = reader.GetString(5);
+                    list.Add(bean);
+                }
+
+            }
+            catch (MySqlException e)
+            {
+                //do nothing;
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+            return list;
         }
     }
 }

@@ -19,10 +19,75 @@ namespace GMIS
     /// Interaction logic for ClassPage.xaml
     /// </summary>
     public partial class ClassPage : Page
-    {
-        public ClassPage()
+    {   
+        private StudentBean? studentBean;
+        public ClassPage(StudentBean? bean)
         {
             InitializeComponent();
+            studentBean = bean;
+            InitTextValue();
+        }
+
+        public string? ImageResource
+        {
+            get
+            {
+                return studentBean?.PhotoURL;
+            }
+        }
+
+        private void InitTextValue()
+        {
+            firstName.Text = "First Name: "+ studentBean?.FirstName;
+            familyName.Text = "Family Name: " + studentBean?.FamilyName;
+            studentID.Text = "Student ID: " + studentBean?.StudentId;
+            groupID.Text = "Group ID: " +  studentBean?.GroupID;
+            campus.Text = "Campus: " + studentBean?.Campus;
+            phone.Text = "Phone: " + studentBean?.Phone;
+            email.Text = "E-mail: " + studentBean?.Email;
+            category.Text = "Category: " + studentBean?.Category;
+        }
+
+        private void showClassButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new ClassShowPage(DatabaseContorller.FetchClassDataFromDatabase(studentBean.GroupID, GlobalsClassDatatype.ClassData)));
+        }
+
+        private void showAllClassButton_Click(object sender, RoutedEventArgs e)
+        {   
+            if(IsMasterDegree())
+            {
+                this.NavigationService.Navigate(new ClassShowPage(DatabaseContorller.FetchClassDataFromDatabase(studentBean.GroupID, GlobalsClassDatatype.AllClassData)));
+            }
+            else
+            {
+                MessageBox.Show("You don't have permission to see all the classes");
+            }
+            
+        }
+
+        /**
+         *  check is master degree or not
+         *  @return bool value
+         */
+        private bool IsMasterDegree()
+        {
+            var category = studentBean.Category;
+            return (category != null) && (category == "Masters");
+        }
+
+        private void searchButton_Click(object sender, RoutedEventArgs e)
+        {
+            var searchText = searchBox.Text;
+            if(searchText.Length > 0)
+            {
+                this.NavigationService.Navigate(new ClassShowPage(DatabaseContorller.FetchClassDataFromDatabase(searchText, GlobalsClassDatatype.CustomerSearchData)));
+            }
+            else
+            {
+                MessageBox.Show("Invalid input, check you spell");
+            }
+            
         }
     }
 }
