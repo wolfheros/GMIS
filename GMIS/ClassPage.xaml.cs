@@ -50,14 +50,16 @@ namespace GMIS
 
         private void showClassButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new ClassShowPage(DatabaseContorller.FetchClassDataFromDatabase(studentBean.GroupID, GlobalsClassDatatype.ClassData)));
+            //this.NavigationService.Navigate(new ClassShowPage(DatabaseContorller.FetchClassDataFromDatabase(studentBean.GroupID, GlobalsClassDatatype.ClassData)));
+            new ShowDataWindow(DatabaseContorller.FetchClassDataFromDatabase(studentBean.GroupID, GlobalsClassDatatype.ClassData)).Show();
         }
 
         private void showAllClassButton_Click(object sender, RoutedEventArgs e)
         {   
             if(IsMasterDegree())
             {
-                this.NavigationService.Navigate(new ClassShowPage(DatabaseContorller.FetchClassDataFromDatabase(studentBean.GroupID, GlobalsClassDatatype.AllClassData)));
+                //this.NavigationService.Navigate(new ClassShowPage(DatabaseContorller.FetchClassDataFromDatabase(studentBean.GroupID, GlobalsClassDatatype.AllClassData)));
+                new ShowDataWindow(DatabaseContorller.FetchClassDataFromDatabase(studentBean.GroupID, GlobalsClassDatatype.AllClassData)).Show();
             }
             else
             {
@@ -81,7 +83,8 @@ namespace GMIS
             var searchText = searchBox.Text;
             if(searchText.Length > 0)
             {
-                this.NavigationService.Navigate(new ClassShowPage(DatabaseContorller.FetchClassDataFromDatabase(searchText, GlobalsClassDatatype.CustomerSearchData)));
+                //this.NavigationService.Navigate(new ClassShowPage(DatabaseContorller.FetchClassDataFromDatabase(searchText, GlobalsClassDatatype.CustomerSearchData)));
+                new ShowDataWindow(DatabaseContorller.FetchClassDataFromDatabase(searchText, GlobalsClassDatatype.CustomerSearchData)).Show();
             }
             else
             {

@@ -34,14 +34,18 @@ namespace GMIS
 
         private void MeetingView_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new MeetingPage2(DatabaseContorller.FetchMeetingDataFromDatabase(studentBean.GroupID, GlobalsMeetingDatatype.ShowMeetingData)));
+            //this.NavigationService.Navigate(new MeetingPage2(DatabaseContorller.FetchMeetingDataFromDatabase(studentBean.GroupID, GlobalsMeetingDatatype.ShowMeetingData)));
+            new ShowMeetingWindow(DatabaseContorller
+                .FetchMeetingDataFromDatabase(studentBean.GroupID, GlobalsMeetingDatatype.ShowMeetingData)).Show();
         }
 
         private void MeetingShow_Click(object sender, RoutedEventArgs e)
         {   
             if(IsMasterDegree())
             {
-                this.NavigationService.Navigate(new MeetingPage2(DatabaseContorller.FetchMeetingDataFromDatabase(studentBean.GroupID, GlobalsMeetingDatatype.ShowAllMeetingData)));
+                //this.NavigationService.Navigate(new MeetingPage2(DatabaseContorller.FetchMeetingDataFromDatabase(studentBean.GroupID, GlobalsMeetingDatatype.ShowAllMeetingData)));
+                new ShowMeetingWindow(DatabaseContorller
+                    .FetchMeetingDataFromDatabase(studentBean.GroupID, GlobalsMeetingDatatype.ShowAllMeetingData)).Show();
             }
             else
             {
@@ -65,7 +69,9 @@ namespace GMIS
             var searchText = MeetingSerachText.Text;
             if(searchText.Length > 0)
             {
-                this.NavigationService.Navigate(new MeetingPage2(DatabaseContorller.FetchMeetingDataFromDatabase(searchText, GlobalsMeetingDatatype.ShowCustomerSearchData)));
+                //this.NavigationService.Navigate(new MeetingPage2(DatabaseContorller.FetchMeetingDataFromDatabase(searchText, GlobalsMeetingDatatype.ShowCustomerSearchData)));
+                new ShowMeetingWindow(DatabaseContorller
+                    .FetchMeetingDataFromDatabase(searchText, GlobalsMeetingDatatype.ShowCustomerSearchData)).Show();
             }
             else
             {
