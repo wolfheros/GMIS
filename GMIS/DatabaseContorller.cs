@@ -31,7 +31,7 @@ namespace GMIS
 
         /**
          *  Fech data from database during the login.
-         *  @User user for the datafeching.
+         *  @User user for the data fetching.
          */
         private static void FetchStudentDataFromDatabase(User user)
         {

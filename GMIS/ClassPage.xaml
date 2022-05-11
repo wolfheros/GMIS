@@ -30,16 +30,16 @@
 
         <Image x:Name="headPhoto" Source="{Binding ImageResource}" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Width="200" Height="250"/>
         <StackPanel Margin="0,10,0,0" Orientation="Vertical" Grid.Row="1" Grid.Column="2" Width="200">
-            <TextBlock x:Name="firstName" Text="First Name:" FontSize="14"/>
-            <TextBlock x:Name="familyName" Text="Family Name:" FontSize="14" />
-            <TextBlock x:Name="studentID" Text="Student ID:" FontSize="14" />
-            <TextBlock x:Name="groupID" Text="Group ID:" FontSize="14" />
+            <TextBlock x:Name="firstName" Text="First Name:" FontSize="16"/>
+            <TextBlock x:Name="familyName" Text="Family Name:" FontSize="16" />
+            <TextBlock x:Name="studentID" Text="Student ID:" FontSize="16" />
+            <TextBlock x:Name="groupID" Text="Group ID:" FontSize="16" />
         </StackPanel>
         <StackPanel Margin="0,10,0,0" Orientation="Vertical" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Width="200">
-            <TextBlock x:Name="campus" Text="Campus:" FontSize="14"/>
-            <TextBlock x:Name="phone" Text="Phone:" FontSize="14" />
-            <TextBlock x:Name="email" Text="Email:" FontSize="14" />
-            <TextBlock x:Name="category" Text="Category:" FontSize="14" />
+            <TextBlock x:Name="campus" Text="Campus:" FontSize="16"/>
+            <TextBlock x:Name="phone" Text="Phone:" FontSize="16" />
+            <TextBlock x:Name="email" Text="Email:" FontSize="16" />
+            <TextBlock x:Name="category" Text="Category:" FontSize="16" />
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="3" Grid.Row="5" Grid.Column="1">
             <Button Margin="30,10,0,0" x:Name="showClassButton" Width="300" Content="Show Class"
