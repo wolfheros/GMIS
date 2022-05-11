@@ -39,20 +39,27 @@ namespace GMIS
             var FirstName = firstName.Text;
             var FamilyName = familyName.Text;
             var StudentID = studentID.Text;
-
-            if(Type == GlobalsType.ClassManagementType)
+            User user = new User(FirstName, FamilyName, StudentID);
+            if (DatabaseContorller.AuthUser(user))
             {
-                User user = new User(FirstName, FamilyName, StudentID);
-                if (DatabaseContorller.AuthUser(user))
+                if (Type == GlobalsType.ClassManagementType)
                 {
+
                     this.NavigationService.Navigate(new ClassPage(DatabaseContorller.GetStudent()));
+
                 }
                 else
                 {
-                    MessageBox.Show(FirstName + " , " + FamilyName + "," + StudentID + " is NOT exit");
+                    this.NavigationService.Navigate(new MeetingPage(DatabaseContorller.GetStudent()));
                 }
-
+                
             }
+            else
+            {
+                MessageBox.Show(FirstName + " , " + FamilyName + "," + StudentID + " is NOT exit");
+            }
+
+            
         }
     }
 }

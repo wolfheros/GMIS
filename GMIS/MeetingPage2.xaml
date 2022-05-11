@@ -9,29 +9,18 @@
       Title="MeetingPage2">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="20"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="20"/>
-        </Grid.RowDefinitions>
-        <TextBlock Grid.Row="2" Grid.Column="3" FontSize="36" 
-                   Text="Meeting Management" Grid.ColumnSpan="3" 
-                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <ListView Margin="10" Name="meetingView">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Meeting ID" Width="120" DisplayMemberBinding="{Binding meeting_id}" />
+                    <GridViewColumn Header="Group ID" Width="120" DisplayMemberBinding="{Binding group_id}" />
+                    <GridViewColumn Header="Day" Width="150" DisplayMemberBinding="{Binding day}" />
+                    <GridViewColumn Header="Stat Time" Width="150" DisplayMemberBinding="{Binding start}" />
+                    <GridViewColumn Header="End Time" Width="150" DisplayMemberBinding="{Binding end}" />
+                    <GridViewColumn Header="Room" Width="100" DisplayMemberBinding="{Binding room}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
         
     </Grid>
 </Page>

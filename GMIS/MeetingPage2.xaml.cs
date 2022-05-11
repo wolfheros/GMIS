@@ -1,4 +1,6 @@
-﻿using System;
+﻿//YUCHAO WU Meeting Page 2
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +18,15 @@ using System.Windows.Shapes;
 namespace GMIS
 {
     /// <summary>
-    /// MeetingPage2.xaml 的交互逻辑
+    /// MeetingPage2.xaml 
     /// </summary>
     public partial class MeetingPage2 : Page
     {
-        public MeetingPage2()
+        public MeetingPage2(List<MeetingBean> MeetingBeans)
         {
             InitializeComponent();
+           meetingView.ItemsSource = MeetingBeans;
         }
     }
 }
+
