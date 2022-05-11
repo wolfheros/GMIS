@@ -61,7 +61,7 @@ namespace GMIS
             }
             else
             {
-                MessageBox.Show("You don't have permission to see all the classes");
+                MessageBox.Show("You have no authorization to do this operation.");
             }
             
         }

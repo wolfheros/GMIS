@@ -38,5 +38,15 @@ namespace GMIS
         {
             this.NavigationService.Navigate(new LoginPage(GlobalsType.MeettingManagementType));
         }
+
+        private void studentbutton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("NO CONTRIBUTION!");
+        }
+
+        private void groupbutton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("NO CONTRIBUTION!");
+        }
     }
 }
