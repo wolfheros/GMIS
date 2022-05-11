@@ -12,12 +12,17 @@ using MySql.Data.MySqlClient;
 
 namespace GMIS
 {
+    /**
+     *  Main database operation class, this class main job is fetching
+     *  data from database and auth the user is valid or not.
+     */
     public class DatabaseContorller
     {
         private static StudentBean? student { get; set; }
 
         // auth the user is in the database or not?
         // @User user to store the input data.
+        // @return bool value.
         public static bool AuthUser(User user)
         {
             FetchStudentDataFromDatabase(user);
@@ -93,6 +98,12 @@ namespace GMIS
             return student;
         }
 
+        /**
+         *  Fetching data from database 
+         *  @sqlString the string to use search or as parameters for database fetching data.
+         *  @DataType is the identify for the type that the database operation will operate.
+         *  @return List<ClassBean> object
+         */
         public static List<ClassBean> FetchClassDataFromDatabase(string sqlString, int DataType)
         {
             MySqlConnection connection = DatabaseHelper.Instance.Connection;
@@ -178,6 +189,12 @@ namespace GMIS
             return list;
         }
 
+        /**
+         *  Fetching data from database 
+         *  @sqlString the string to use search or as parameters for database fetching data.
+         *  @DataType is the identify for the type that the database operation will operate.
+         *  @return List<MeetingBean> object
+         */
         public static List<MeetingBean> FetchMeetingDataFromDatabase(string sqlString, int DataType)
         {
             MySqlConnection connection = DatabaseHelper.Instance.Connection;
@@ -189,7 +206,7 @@ namespace GMIS
                 connection.Open();
                 switch (DataType)
                 {
-                    // show class data
+                    // show meeting data
                     case 0:
                         {
                             mySqlCommand = new MySqlCommand("SELECT meeting_id," +
@@ -201,7 +218,7 @@ namespace GMIS
                             mySqlCommand.Parameters.AddWithValue("id", sqlString);
                             break;
                         }
-                    // show all class data
+                    // show all meeting data
                     case 1:
                         {
                             mySqlCommand = new MySqlCommand("SELECT meeting_id, " +
@@ -212,7 +229,7 @@ namespace GMIS
                                         "room FROM meeting", connection);
                             break;
                         }
-                    // custom search class table data
+                    // custom search meeting table data
                     case 2:
                         {
                             mySqlCommand = new MySqlCommand("SELECT meeting_id, " +

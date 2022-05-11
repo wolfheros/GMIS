@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace GMIS
 {
+    /**
+     *  Const class for data type idenity.
+     */
     public static class GlobalsType
     {
         public static readonly int ClassManagementType = 0;
@@ -27,6 +30,9 @@ namespace GMIS
         public const string SEVER = "alacritas.cis.utas.edu.au";
     }
 
+    /**
+     *  Const value for type varified
+     */
     public static class GlobalsClassDatatype
     {
         public static readonly int ClassData = 0;
@@ -34,6 +40,9 @@ namespace GMIS
         public static readonly int CustomerSearchData = 2;
     }
 
+    /**
+     *  Const value for type varified
+     */
     public static class GlobalsMeetingDatatype
     {
         public static readonly int ShowMeetingData = 0;

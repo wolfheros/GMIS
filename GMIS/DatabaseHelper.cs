@@ -12,6 +12,9 @@ using MySql.Data.MySqlClient;
 
 namespace GMIS
 {
+    /**
+     *  Singleton class for building MysqlConnection object.
+     */
     public sealed class DatabaseHelper
     {
         private MySqlConnection _connection;
